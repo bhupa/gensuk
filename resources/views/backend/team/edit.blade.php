@@ -36,7 +36,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="email" class="form-control" name="name" placeholder="Enter Name" value="{{$teams->name}}">
+                                    <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{$teams->name}}">
 
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
