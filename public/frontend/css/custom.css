@@ -1,0 +1,141 @@
+.top-header {
+    width: 100%;
+    background-color:white;
+    height: 50px;
+}
+.top-header-wrapper {
+
+    float: right;
+    display: block;
+
+
+}
+.top-header-wrapper ul {
+    padding: 0px;
+    margin: 10px;
+    list-style-type: none;
+    font-size: 16px;
+
+}
+.top-header-wrapper ul li {
+     display: inline-block;
+}
+.top-header-wrapper ul li:first-child, .top-header-wrapper ul li:first-child  + li  {
+    margin-right: 20px;
+}
+.top-header-wrapper ul li span {
+    font-size: 14px;
+    color: #fff;
+    margin-right: 10px;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    background: #f3933d;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    transition: all 300ms linear 0s;
+}
+
+
+.header_area{
+        background: #60bc0f;
+}
+.main_menu {
+    background: #60bc0f !important;
+}
+ .main_menu .navbar .nav .nav-item:hover .nav-link {
+    color: black !important;
+}
+.main_menu .navbar .nav .nav-item.active .nav-link {
+    color: red !important;
+}
+.owl-nav button {
+    width: 50px;
+}
+.owl-nav .owl-prev {
+    width: 15px;
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    margin-left: -20px;
+    display: block !important;
+    border:0px solid black;
+}
+
+.owl-nav .owl-next {
+    width: 15px;
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    right: -25px;
+    display: block !important;
+    border:0px solid black;
+}
+.owl-prev i, .owl-next i {
+    transform : scale(1,6); color: #ccc;
+}
+p > input
+{
+	padding: 0;
+	margin: 0;
+	height: 16px;
+	width: 16px;
+	float: left;
+	position: absolute;
+	left: 0;
+	opacity: 100;
+}
+p > label {
+	line-height: 1;
+	-moz-transition: color 1s ease;
+	-o-transition: color 1s ease;
+	-webkit-transition: color 1s ease;
+	transition: color 1s ease;
+  vertical-align: middle;
+}
+.gallery-image{
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+
+  .gallery-image .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2124257d;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    transition: .5s ease;
+  }
+
+  .gallery-image:hover .overlay {
+    width: 100%;
+  }
+
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+
+   .img-gal p{
+    text-align: center; color: #000000; padding: 10px;
+  }
+  .ekko-lightbox {
+      z-index: 1111111;
+  }
+
+
