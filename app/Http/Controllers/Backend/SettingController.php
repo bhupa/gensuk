@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\setting\settingStoreRequest;
-use App\Http\Requests\Backend\setting\settingUpdateRequest;
-use App\Repositories\settingRepository;
+use App\Http\Requests\Backend\Setting\SettingStoreRequest;
+use App\Http\Requests\Backend\Setting\SettingUpdateRequest;
+use App\Repositories\SettingRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
