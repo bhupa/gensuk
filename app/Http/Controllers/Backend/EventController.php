@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\Event\eventStoreRequest;
-use App\Http\Requests\Backend\Event\eventUpdateRequest;
+use App\Http\Requests\Backend\Event\EventStoreRequest;
+use App\Http\Requests\Backend\Event\EventUpdateRequest;
 use App\Repositories\EventRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
