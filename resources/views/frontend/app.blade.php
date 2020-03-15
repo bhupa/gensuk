@@ -134,6 +134,7 @@
                         <ul class="list">
                             <li><a href="{{route('home')}}">Home</a></li>
                             <li><a href="{{route('about-us')}}">About</a></li>
+                            <li><a href="{{route('blog.index')}}">Blog</a></li>
                             <li><a href="{{route('event.index')}}">Events</a></li>
                             <li><a href="{{route('team.index')}}">Team</a></li>
                             <li><a href="{{route('gallery.index')}}">Gallery</a></li>

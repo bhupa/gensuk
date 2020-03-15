@@ -42,7 +42,14 @@
                     </li>
                 </ul>
             </li>
-
+            <li class="nav-item">
+                <a href="{{route('contacts.index')}}" class="nav-link">
+                    <i class="nav-icon far fa-file"></i>
+                    <p>
+                        Contact Details
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{route('contents.index')}}" class="nav-link">
                     <i class="nav-icon far fa-file"></i>
@@ -93,10 +100,34 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{route('memberships.index')}}" class="nav-link">
+                    <i class="nav-icon far fa-file-archive"></i>
+                    <p>
+                        Membership
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{route('projects.index')}}" class="nav-link">
                     <i class="nav-icon far fa-file-archive"></i>
                     <p>
                         Project
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('investors.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-cogs"></i>
+                    <p>
+                        Investor
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('volunters.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-cogs"></i>
+                    <p>
+                       Volunter
                     </p>
                 </a>
             </li>

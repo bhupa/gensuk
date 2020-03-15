@@ -33,99 +33,120 @@
 
                     <div class="comment-form">
                         <h4>Become a Member</h4>
-                        <form>
-                            <div class="form-group form-inline">
+                        @if (\Session::has('success'))
+                            <div class="alert alert-success">
+                                <ul>
+                                    <li>{!! \Session::get('success') !!}</li>
+                                </ul>
+                            </div>
+
+                        @endif
+                        {{Form::open(['route'=>'membership.store','novalidate'=>"novalidate"])}}
+
+                        <div class="form-group form-inline">
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="text" class="form-control" id="address" placeholder="Enter e address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  address'">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  address'">
+                                    @if ($errors->has('address'))
+                                        <span class="text-danger">{{ $errors->first('address') }}</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group form-inline">
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="number" class="form-control" id="Moblie" placeholder="Enter Moblie" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Moblie'">
+                                    <input type="number" class="form-control" name="mobile" id="Moblie" placeholder="Enter Moblie" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Moblie'">
+                                    @if ($errors->has('mobile'))
+                                        <span class="text-danger">{{ $errors->first('mobile') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="number" class="form-control" id="telephone" placeholder="Enter  Telephone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Telephone'">
+                                    <input type="number" class="form-control" id="telephone" name="telephone" placeholder="Enter  Telephone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Telephone'">
+                                    @if ($errors->has('telephone'))
+                                        <span class="text-danger">{{ $errors->first('telephone') }}</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group form-inline">
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="number" class="form-control" id="Address" placeholder="Enter Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Address'">
+                                    <input type="email" class="form-control"  name="email" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email'">
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="number" class="form-control" id="Postal Code" placeholder="Enter  Postal Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Postal Code'">
+                                    <input type="text" class="form-control" name="postal_code" id="Postal Code" placeholder="Enter  Postal Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Postal Code'">
+                                    @if ($errors->has('postal_code'))
+                                        <span class="text-danger">{{ $errors->first('postal_code') }}</span>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="form-group form-inline">
-                                <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="number" class="form-control" id="Email Address" placeholder="Enter Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email Address'">
-                                </div>
-                                <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="number" class="form-control" id="Postal Code" placeholder="Enter  Postal Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Postal Code'">
-                                </div>
-                            </div>
+
                             <!-- Multiple Radios (inline) -->
                             <div class="form-group form-inline">
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <label class=" control-label" for="radios" style="margin-bottom: -27px;">Gender</label>
-                                    <div class="col-md-12 " >
-                                        <label class="radio-inline" for="radios-0" style="margin-left: -10px; display: inline;">
-                                            <input type="radio" id="radios-0" name="gender" checked value="Male" /> Male:
-                                        </label>
-                                        <label class="radio-inline" for="radios-0" style="margin-left: 10px; display: inline;"></label>
-                                        <input type="radio" id="radios-1" name="gender" value="Female" /> Female
-                                        </label>
-
-                                    </div>
+                                    <select name="gender" id="" class="form-control">
+                                        <option value="0">Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select><br>
+                                    @if ($errors->has('gender'))
+                                        <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <label class=" control-label" for="radios" style="margin-bottom: -27px;">Fee Paid::</label>
-                                    <div class="col-md-12 " >
-                                        <label class="radio-inline" for="radios-0" style="margin-left: -10px; display: inline;">£10
-                                            <input type="radio" id="radios-0" name="gender" checked value="Male" />
-                                        </label>
-                                        <label class="radio-inline" for="radios-0" style="margin-left: 10px; display: inline;">£20  </label>
-                                        <input type="radio" id="radios-1" name="gender" value="Female" />
-                                        </label>
-                                    </div>
+                                    <select name="fee" id="" class="form-control">
+                                        <option value="0">Fee Paid</option>
+                                        <option value="£10">£10</option>
+                                        <option value="£20">£20</option>
+                                    </select><br>
+                                    @if ($errors->has('fee'))
+                                        <span class="text-danger">{{ $errors->first('fee') }}</span>
+                                    @endif
 
                                 </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <select name="membership" id="" class="form-control">
+                                        <option value="0">Membership Type</option>
+                                        <option value="Life Member">Life Member</option>
+                                        <option value="Affiliate Member">Affiliate Member</option>
+                                    </select>
 
-                                <div class="form-group form-inline">
-
-                                    <label class=" control-label" for="radios" style="margin-bottom: 15px;margin-top: 20px;margin-right:20px;">Membership :</label>
-                                    <label class="radio-inline"></label>
-                                    <label class="radio-inline" for="radios-0" style="margin-left: -10px; display: inline;">
-                                        <input type="radio" id="radios-0" name="gender" checked value="Male" /> Life Member:
-                                    </label>
-                                    <label class="radio-inline" for="radios-0" style="margin-left: 10px; display: inline;"></label>
-                                    <input type="radio" id="radios-1" name="gender" value="Female" /> Affiliate Member
-                                    </label>
-
+                                    @if ($errors->has('membership'))
+                                        <span class="text-danger">{{ $errors->first('membership') }}</span>
+                                    @endif
 
                                 </div>
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                <input type="date" placeholder="Date of Birth" name="dob" class="textbox-n form-control" type="text" onfocus="(this.type='date')" id="date">
 
-
-
-
+                                @if ($errors->has('dob'))
+                                    <span class="text-danger">{{ $errors->first('dob') }}</span>
+                                @endif
+                                </div>
                             </div>
                             <div class="form-group ">
 
-                                <input placeholder="Date of Birth" class="textbox-n form-control" type="text" onfocus="(this.type='date')" id="date">
 
-                            </div>
-                            <div class="form-group ">
+                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Tell some thig about your self:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tell some thig about your self:'" required=""></textarea>
 
-
-                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Your current business details:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your current business details:'" required=""></textarea>
-
+                                @if ($errors->has('message'))
+                                    <span class="text-danger">{{ $errors->first('message') }}</span>
+                                @endif
                             </div>
 
                             <button type="submit" class="primary-btn primary_btn">Register</button>
-                        </form>
+
+                       {{Form::close()}}
                     </div>
+
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">

@@ -24,6 +24,8 @@ Route::resource('contact-us', 'ContactController');
 Route::resource('team', 'TeamController');
 Route::resource('project', 'ProjectController');
 Route::resource('gallery', 'GalleryController');
+Route::resource('volunter', 'VolunterController');
+Route::resource('investor', 'InvestorController');
 Route::post('team/list','TeamController@list')->name('team.list');
 
 Route::get('/dashboard','Backend\DashboardController@index')->name('dashboard');
@@ -102,5 +104,8 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     Route::resource('life-members','LifeMemberController');
     Route::post('/life-members/change-status','LifeMemberController@changeStatus')->name('life-members.change-status');
 
-
+    Route::resource('contacts','ContactController');
+    Route::resource('volunters','VolunterController');
+    Route::resource('investors','InvestorController');
+    Route::resource('memberships','MembershipController');
 });

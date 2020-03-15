@@ -112,7 +112,7 @@ class EventController extends Controller
             $data['image'] = 'event/'.$fileName;
 
         }
-
+        $data['volunters'] =(isset($request['volunters'])) ? 1 : 0;
         $data['created_by'] = Auth::user()->id;
         if($this->event->update( $event->id,$data)){
 

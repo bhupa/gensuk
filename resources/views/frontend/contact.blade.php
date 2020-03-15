@@ -58,29 +58,53 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    {{Form::open(['route'=>'contact-us.store','class'=>"row contact_form",'id'=>'contactForm','novalidate'=>"novalidate"])}}
+{{--                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">--}}
                         <div class="col-md-6">
+
+                                @if (\Session::has('success'))
+                                    <div class="alert alert-success">
+                                        <ul>
+                                            <li>{!! \Session::get('success') !!}</li>
+                                        </ul>
+                                    </div>
+
+                                @endif
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Full Name" value="{{old('name')}}">
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" value="{{old('email')}}">
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
+                                <input type="text" class="form-control" id="subject" name="phone" placeholder="Enter Phone" value="{{old('phone')}}">
+                                @if ($errors->has('phone'))
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
-                            </div>
+                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message" value="{{old('message')}}"></textarea>
+                                @if ($errors->has('message'))
+                                    <span class="text-danger">{{ $errors->first('message') }}</span>
+                                @endif
                         </div>
                         <div class="col-md-12 text-right">
                             <button type="submit" value="submit" class="btn primary_btn">Send Message</button>
                         </div>
-                    </form>
+{{--                    </form>--}}
+                    {{ Form::close() }}
                 </div>
             </div>
+        </div>
+
         </div>
     </section>
 @endsection

@@ -30,6 +30,61 @@
                     </div>
 
 
+                    @if($project->investors =='1')
+                        <div class="comment-form">
+                            <h4>Do you want to Invest</h4>
+                            @if (\Session::has('success'))
+                                <div class="alert alert-success">
+                                    <ul>
+                                        <li>{!! \Session::get('success') !!}</li>
+                                    </ul>
+                                </div>
+
+                            @endif
+                            {{Form::open(['route'=>'investor.store','novalidate'=>"novalidate"])}}
+                            <input type="hidden" name="id" value="{{$project->id}}">
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'" value="{{old('name')}}">
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 email">
+                                    <input type="email" class="form-control" name="email" id="address" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  email'" value="{{old('email')}}">
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <input type="number" class="form-control" name="phone" id="telephone" placeholder="Enter  Telephone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Telephone'" value="{{old('phone')}}">
+                                    @if ($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 email">
+                                </div>
+                            </div>
+
+                            <!-- Multiple Radios (inline) -->
+                            <div class="form-group ">
+
+
+                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Your current business details:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your current business details:'" required=""></textarea>
+                                @if ($errors->has('message'))
+                                    <span class="text-danger">{{ $errors->first('message') }}</span>
+                                @endif
+                            </div>
+
+                            <button type="submit" class="primary-btn primary_btn">Register</button>
+                            {{--                        </form>--}}
+                            {{Form::close()}}
+                        </div>
+
+                    @endif
+
 
 
                 </div>

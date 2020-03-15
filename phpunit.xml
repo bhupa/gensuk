@@ -1,46 +1,72 @@
-<div class="single-table">
-    <div class="row">
-        <div class="panel panel-flat">
-
-
-            <div class="panel-body gallery">
-                @if($images->isNotEmpty())
-                @foreach($images as $image)
-                <div class="col-sm-6 col-lg-4" id="imageItem-{{ $image->id }}">
-                    <div class="card">
-                        <div class="card-img-actions m-1">
-                            <img class="card-img img-fluid" src="{{ asset('storage/'.$image->image) }}" alt=""
-                                 style="width: 300px; height:150px;">
-                            <div class="card-img-actions-overlay card-img">
-                                <a href="{{ asset('storage/'.$image->image) }}"
-                                   class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round"
-                                   data-popup="lightbox" rel="group">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-
-                                <a href="javascript:void(0)" data-type="{{ $image->id  }}" data-gallery = "{{ $gallery->id }}"
-                                   class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round ml-2 delete-galleries-image">
-                                    <i class="fa fa-trash"></i>
-
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @else
-                <div class="row">
-                    <div class="col-sm-6 col-lg-12">
-                        <div class="card">
-                            Sorry, no image has been uploaded yet.
-                        </div>
-                    </div>
-
-                </div>
-                @endif
-            </div>
-
-        </div>
-
+<div class="form-group form-inline">
+    <div class="form-group col-lg-6 col-md-6 name">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+    </div>
+    <div class="form-group col-lg-6 col-md-6 email">
+        <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  address'">
     </div>
 </div>
+<div class="form-group form-inline">
+<div class="form-group col-lg-6 col-md-6 name">
+    <input type="number" class="form-control" name="mobile" id="Moblie" placeholder="Enter Moblie" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Moblie'">
+</div>
+<div class="form-group col-lg-6 col-md-6 email">
+    <input type="number" class="form-control" id="telephone" name="telephone" placeholder="Enter  Telephone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Telephone'">
+</div>
+</div>
+<div class="form-group form-inline">
+<div class="form-group col-lg-6 col-md-6 name">
+    <input type="email" class="form-control"  name="email" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email'">
+</div>
+<div class="form-group col-lg-6 col-md-6 email">
+    <input type="number" class="form-control" name="postal_code" id="Postal Code" placeholder="Enter  Postal Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter  Postal Code'">
+</div>
+</div>
+
+    <!-- Multiple Radios (inline) -->
+<div class="form-group form-inline">
+<div class="form-group col-lg-4 col-md-4 name">
+    <select name="gender" id="">
+        <option value="0">Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+</div>
+<div class="form-group col-lg-4 col-md-4 name">
+    <select name="fee" id="">
+        <option value="0">Fee Paid</option>
+        <option value="£10">£10</option>
+        <option value="£20">£20</option>
+    </select>
+
+</div>
+
+<div class="form-group col-lg-4 col-md-4 name">
+    <select name="membership" id="">
+        <option value="0">Membership Type</option>
+        <option value="Life Member">Life Member</option>
+        <option value="Affiliate Member">Affiliate Member</option>
+    </select>
+
+
+
+</div>
+
+
+
+
+</div>
+<div class="form-group ">
+
+<input placeholder="Date of Birth" name="dob" class="textbox-n form-control" type="text" onfocus="(this.type='date')" id="date">
+
+</div>
+<div class="form-group ">
+
+
+<textarea class="form-control mb-10" rows="5" name="message" placeholder="Tell some thig about your self:" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tell some thig about your self:'" required=""></textarea>
+
+</div>
+
+<button type="submit" class="primary-btn primary_btn">Register</button>
