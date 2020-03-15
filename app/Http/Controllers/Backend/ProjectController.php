@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\Project\ProjectStoreRequest;
 use App\Http\Requests\Backend\Project\ProjectUpdateRequest;
-use App\Repositories\projectRepository;
+use App\Repositories\ProjectRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;

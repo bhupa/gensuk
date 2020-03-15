@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\event\eventStoreRequest;
 use App\Http\Requests\Backend\event\eventUpdateRequest;
-use App\Repositories\eventRepository;
+use App\Repositories\EventRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
