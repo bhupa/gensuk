@@ -26,7 +26,7 @@ class TeamController extends Controller
     public function index()
     {
         $year = Carbon::now()->format('Y');
-        $teams = $this->team->whereYear('date',$year)->orderBy('display_orders','asc')->get();
+        $teams = $this->team->orderBy('display_orders','asc')->whereYear('date',$year)->get();
         $members = $this->member->where('is_active','1')->orderBy('display_orders','asc')->get();
 
 //        $teamList = Team::whereYear('date', '=', $year)->get();
