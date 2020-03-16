@@ -118,31 +118,31 @@
                         <div class="item">
 
                             <div class="team_item">
-                                <div class="team_img">
-                                    @if(file_exists('storage/'.$member->team->image) && $member->team->image != '')
-                                        <img class="img-fluid" src="{{asset('storage/'.$member->team->image)}}" alt="{{$member->team->name}}">
+{{--                                <div class="team_img">--}}
+{{--                                    @if(file_exists('storage/'.$member->team->image) && $member->team->image != '')--}}
+{{--                                        <img class="img-fluid" src="{{asset('storage/'.$member->team->image)}}" alt="{{$member->team->name}}">--}}
 
-                                    @endif
+{{--                                    @endif--}}
 
-                                </div>
+{{--                                </div>--}}
                                 <div class="team_name">
-                                    <h4>{{$member->team->name}}</h4>
+                                    <h4>{{$member->team}}</h4>
 {{--                                    <p>{{$member->team->position}}</p>--}}
 
-                                    <div class="social">
-                                        @if($member->team->facebook != '')
-                                            <a href="{{$member->team->faecbook}}"><i class="fa fa-facebook"></i></a>
-                                        @endif
-                                        @if($member->team->twitter != '')
-                                            <a href="{{$member->team->twitter}}" class="active"><i class="fa fa-twitter"></i></a>
-                                        @endif
-                                        @if($member->team->insta != '')
-                                            <a href="{{$member->team->insta}}"><i class="fa fa-instagram"></i></a>
-                                        @endif
-                                        @if($member->team->email != '')
-                                            <a href="mailto:{{$member->team->email}}"><i class="fa fa-envelope-o"></i></a>
-                                        @endif
-                                    </div>
+{{--                                    <div class="social">--}}
+{{--                                        @if($member->team->facebook != '')--}}
+{{--                                            <a href="{{$member->team->faecbook}}"><i class="fa fa-facebook"></i></a>--}}
+{{--                                        @endif--}}
+{{--                                        @if($member->team->twitter != '')--}}
+{{--                                            <a href="{{$member->team->twitter}}" class="active"><i class="fa fa-twitter"></i></a>--}}
+{{--                                        @endif--}}
+{{--                                        @if($member->team->insta != '')--}}
+{{--                                            <a href="{{$member->team->insta}}"><i class="fa fa-instagram"></i></a>--}}
+{{--                                        @endif--}}
+{{--                                        @if($member->team->email != '')--}}
+{{--                                            <a href="mailto:{{$member->team->email}}"><i class="fa fa-envelope-o"></i></a>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
