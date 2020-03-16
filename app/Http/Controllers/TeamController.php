@@ -30,8 +30,8 @@ class TeamController extends Controller
         $members = $this->member->where('is_active','1')->orderBy('display_orders','asc')->get();
 
 //        $teamList = Team::whereYear('date', '=', $year)->get();
-        $usersUnique = Team::select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(date, '%Y') new_date"),  DB::raw('YEAR(date) year, MONTH(date) year'))
-        ->where('is_active','1')->groupby('date','year')
+        $usersUnique = Team::where('is_active','1')->select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(date, '%Y') new_date"),  DB::raw('YEAR(date) year, MONTH(date) year'))
+        ->groupby('date','year')
             ->orderBy('date','desc')
         ->get();
 
