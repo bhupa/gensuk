@@ -119,10 +119,10 @@
 
                             <div class="team_item">
                                 <div class="team_img">
-                                    @if(file_exists('storage/'.$member->team->image) && $member->team->image != '')
-                                        <img class="img-fluid" src="{{asset('storage/'.$member->team->image)}}" alt="{{$member->team->name}}">
+{{--                                    @if(file_exists('storage/'.$member->team->image) && $member->team->image != '')--}}
+{{--                                        <img class="img-fluid" src="{{asset('storage/'.$member->team->image)}}" alt="{{$member->team->name}}">--}}
 
-                                    @endif
+{{--                                    @endif--}}
 
                                 </div>
                                 <div class="team_name">
