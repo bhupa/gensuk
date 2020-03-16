@@ -29,7 +29,7 @@
                         <p>{{ $content->short_description }} </p>
                     @endif
                 @endforeach
-                <form action="#" style="    width: 40%; margin: 33px auto;">
+                <form action="#"  id="team-select-btn">
 
                     <div class="input-group-icon mt-10">
                         <div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>

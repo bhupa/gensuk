@@ -137,5 +137,13 @@ p > label {
   .ekko-lightbox {
       z-index: 1111111;
   }
+#team-select-btn {
+    width: 40%; margin: 33px auto;
+}
+@media screen and (max-width: 767px) {
+    #team-select-btn  {
+        width: 100%;
+    }
+}
 
 
