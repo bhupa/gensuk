@@ -126,7 +126,7 @@
 
 {{--                                </div>--}}
                                 <div class="team_name">
-                                    <h4>{{$member->team->name}}</h4>
+                                    <h4>{{$member->team['name']}}</h4>
 {{--                                    <p>{{$member->team->position}}</p>--}}
 
 {{--                                    <div class="social">--}}
