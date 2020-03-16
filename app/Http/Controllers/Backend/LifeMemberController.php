@@ -38,7 +38,8 @@ class LifeMemberController extends Controller
      */
     public function create()
     {
-        $teams = $this->teams->get()->sortBy('name');
+        $teamList= $this->teams->get()->sortBy('name');
+        $teams = $teamList->unique('name');
 
         return view('backend.member.create')->withTeams($teams);
     }
