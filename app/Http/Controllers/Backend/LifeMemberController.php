@@ -62,9 +62,9 @@ class LifeMemberController extends Controller
         if($this->member->create($data)){
 
 
-            return redirect()->to('/life-members')->with('success','member added successfully');
+            return redirect()->to('/life-members')->with('success','Member added successfully');
         }
-        return redirect()->back()->with('errors','member cannot added Successfully');
+        return redirect()->back()->with('errors','Member cannot added Successfully');
     }
 
     /**
@@ -109,9 +109,9 @@ class LifeMemberController extends Controller
         if($this->member->update( $member->id,$data)){
 
 
-            return redirect()->to('/life-members')->with('success','member updated successfully');
+            return redirect()->to('/life-members')->with('success','Member updated successfully');
         }
-        return redirect()->back()->with('errors','member cannot updated Successfully');
+        return redirect()->back()->with('errors','Member cannot updated Successfully');
     }
 
     /**
