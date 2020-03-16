@@ -109,7 +109,7 @@
         <div class="container">
             <div class="main_title">
                 @foreach($contents as $content)
-                    @if($content->slug =='events')
+                    @if($content->slug =='event')
                 <h2>{{$content->title}}</h2>
                 <p>{{ $content->short_description }} </p>
                     @endif
