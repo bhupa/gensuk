@@ -162,7 +162,7 @@
         $(document).ready(function(){
             $('.list li').on('click',function(){
                 var date = $(this).attr('data-value');
-                $("#overlay-load").fadeIn(5000);
+                $("#overlay-load").fadeIn(300);
                 $.ajax({
                     type: "POST",
                     url: "{{ route('team.list') }}",
