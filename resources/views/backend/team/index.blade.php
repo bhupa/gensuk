@@ -39,6 +39,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Position</th>
+                                <th scope="col">Year</th>
                                 <th scope="col">Image</th>
                                 <th scope="col" >created_by</th>
                                 <th scope="col">Status</th>
@@ -52,6 +53,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->position}}</td>
+                                    <td>  {{date('Y', strtotime($item->date))}}</td>
                                     <td>
                                         <img style="width:100px;height:100px;" src="{{asset('storage/'.$item->image)}}" alt="{{$item->name}}">
                                     </td>
