@@ -209,6 +209,11 @@
         </div>
     </div>
 </footer>
+<div id="overlay-load" style="display: none;">
+    <div class="cv-spinner">
+        <span class="spinner"></span>
+    </div>
+</div>
 <!--================ End footer Area  =================-->
 
 

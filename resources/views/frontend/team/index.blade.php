@@ -162,6 +162,7 @@
         $(document).ready(function(){
             $('.list li').on('click',function(){
                 var date = $(this).attr('data-value');
+                $("#overlay-load").fadeIn(5000);
                 $.ajax({
                     type: "POST",
                     url: "{{ route('team.list') }}",
@@ -173,7 +174,11 @@
                     },
                     dataType: 'html',
                     success: function (teams) {
-                        $('.teamlist').html(teams)
+                        setTimeout(function(){
+                            $("#overlay-load").fadeOut(300);
+                            $('.teamlist').html(teams)
+                        },500);
+
 
                     },
                     error: function (e) {
