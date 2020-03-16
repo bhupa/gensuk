@@ -106,10 +106,9 @@ class ContentBannerController extends Controller
             $image= $request->file('image');
             $fileName = time().$image->getClientOriginalName();
             $this->storage->put($this->upload_path. $fileName, file_get_contents($image->getRealPath()));
-            $data['image'] = 'content-banner/'.$fileName;
+            $data['image'] = 'contentbanner/'.$fileName;
 
         }
-
         $data['created_by'] = Auth::user()->id;
         if($this->contentbanner->update( $contentbanner->id,$data)){
 
