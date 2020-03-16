@@ -221,5 +221,8 @@ abstract class BaseRepository
     {
         return $this->model()->where($field,$value)->first();
     }
+    public function whereYear($field,$value){
+        return $this->model()->whereYear($field,$value)->get();
+    }
 
 }

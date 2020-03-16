@@ -19,6 +19,7 @@ use App\Repositories\ProjectRepository;
 use App\Repositories\ServiceCategoryRepository;
 use App\Repositories\SettingRepository;
 use App\Repositories\TeamRepository;
+use Carbon\Carbon;
 use Illuminate\View\View;
 
 
@@ -63,7 +64,7 @@ class HomeComposer
         $blogCategories = $this->blogCategories->where('is_active','1')->orderBy('name')->take(5)->get();
         $blogLists = $this->blogs->where('is_active','1')->orderBy('created_at', 'desc')->take(5)->get();
         $contents = $this->content->where('is_active','1')->get();
-        $teams = $this->team->where('is_active','1')->orderBy('display_orders','asc')->get();
+        $teams = $this->team->where('is_active','1')->orderBy('display_orders','asc')->whereYear('date',Carbon::now()->format('Y'))->get();
         $settings = $this->setting->where('is_active','1')->get();
         $contentBanners = $this->contentBanner->where('is_active','1')->get();
         $projects = $this->project->where('is_active','1')->orderBy('created_at','desc')->take(3)->get();
