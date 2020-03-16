@@ -6,13 +6,13 @@
     <!--================ Home Banner Area =================-->
     <section class="banner_area">
         <div class="banner_inner d-flex align-items-center">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="" style="background:linear-gradient(0deg, rgba(6, 13, 1, 0.6), rgba(6, 13, 1, 0.6)), @foreach($contentBanners as $banner)   @if($banner->slug =='home')url('{{asset('storage/'.$banner->image)}}')@endif @endforeach no-repeat scroll center center;"></div>
+            <div class="overlay bg-parallax" id="paralax-image-banner" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="" style="background:linear-gradient(0deg, rgba(6, 13, 1, 0.6), rgba(6, 13, 1, 0.6)), @foreach($contentBanners as $banner)   @if($banner->slug =='home')url('{{asset('storage/'.$banner->image)}}')@endif @endforeach no-repeat scroll center center;"></div>
             <div class="container">
                 <div class="banner_content text-center">
                     @foreach($contentBanners as $banner)
                         @if($banner->slug =='home')
                     <h2>{{$banner->title}}</h2>
-                    <p>{{str_limit($banner->short_description,'130','....')}}</p>
+                    <p class="banner-description">{{str_limit($banner->short_description,'130','....')}}</p>
                         @endif
                     @endforeach
                 </div>

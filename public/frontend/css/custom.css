@@ -140,9 +140,24 @@ p > label {
 #team-select-btn {
     width: 40%; margin: 33px auto;
 }
+.banner-description {
+    width: 51%;
+    margin: auto;
+    font-size: 22px;
+    line-height: 35px;
+}
+#paralax-image-banner {
+    /*top:130px;*/
+}
 @media screen and (max-width: 767px) {
     #team-select-btn  {
         width: 100%;
+    }
+    .banner-description {
+        width: 100%;
+        margin: auto;
+        font-size: 16px;
+        line-height: 30px;
     }
 }
 
