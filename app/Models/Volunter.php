@@ -12,6 +12,11 @@ class Volunter extends Model
         'name',
         'email',
         'phone',
-        'message'
+        'message',
+        'event_id'
     ];
+
+    public function event(){
+        return $this->belongsTo(Event::class,'event_id');
+    }
 }

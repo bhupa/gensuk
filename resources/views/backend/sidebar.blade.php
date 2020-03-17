@@ -127,7 +127,7 @@
                 <a href="{{route('volunters.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-cogs"></i>
                     <p>
-                       Volunter
+                       Volunteer
                     </p>
                 </a>
             </li>

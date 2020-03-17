@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProjectIdToProject extends Migration
+class AddEventIdToVolunter extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddProjectIdToProject extends Migration
      */
     public function up()
     {
-        Schema::table('project', function (Blueprint $table) {
-            $table->integer('project_id')->unsigned();
+        Schema::table('volunter', function (Blueprint $table) {
+            $table->string('event_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddProjectIdToProject extends Migration
      */
     public function down()
     {
-        Schema::table('project', function (Blueprint $table) {
-            $table->dropColumn('project_id');
+        Schema::table('volunter', function (Blueprint $table) {
+            $table->dropColumn('event_id');
         });
     }
 }

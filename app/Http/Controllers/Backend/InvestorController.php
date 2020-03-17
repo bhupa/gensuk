@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\Investor\InvestorReplyStore;
+use App\Mail\Contact\AdminContactReplyMail;
+use App\Mail\Contact\ContactReplyMail;
+use App\Mail\Investment\InvestmentReplyMail;
 use App\Repositories\InvestorsRepository;
+use App\Repositories\SettingRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class InvestorController extends Controller
 {
-    protected $investor;
+    protected $investor,$setting;
 
-    public function __construct(InvestorsRepository $investor)
+    public function __construct(InvestorsRepository $investor,SettingRepository $setting)
     {
         $this->investor = $investor;
+        $this->setting =$setting;
 
     }
     public function index()
@@ -38,20 +45,31 @@ class InvestorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(investortoreRequest $request)
+    public function store(InvestorReplyStore $request)
     {
-        $data = $request->except('_token','image');
+        $data= $request->except('_token','description');
+        $data = $this->investor->find($request->id);
+        $data['description']= $request->description;
+        $data['cc'] ='CC of Investor message reply';
+        $adminEmail = $this->setting->where('slug','from-admin')->first();
+        $companyName = $this->setting->where('slug','compant-name')->first();
+        $fromEmail = $this->setting->where('slug','reply-email')->first();
+        $company = [
+            'name'=>$companyName->value,
+            'email'=> $fromEmail->value,
+            'compnay_email'=> $adminEmail->value
+        ];
 
+        Mail::to($adminEmail->value)->send(new AdminContactReplyMail($data,$company));
+        Mail::to($data->email)->send(new InvestmentReplyMail($data,$company));
 
-        $data['is_active'] =(isset($request['is_active'])) ? 1 : 0;
-        $data['create_by'] = Auth::user()->id;
-
-        if($this->investor->create($data)){
-
-
-            return redirect()->to('/investor')->with('success','investor created successfully');
+        if (Mail::failures()){
+            return redirect()->back()->with('errors','Email cannot send succeefully');
         }
-        return redirect()->back()->with('errors','investor cannot created Successfully');
+        else{
+            return redirect()->to('/investors')->with('success','Email has sent successfully');
+
+        }
     }
 
     /**
@@ -72,13 +90,12 @@ class InvestorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        $categories = $this->category->where('is_active','1')->orderBy('name')->get();
 
 
-        $investor = $this->investor->where('slug', $slug)->first();
-        return view('backend.investor.edit')->withinvestor($investor )->withCategories($categories);
+        $investor = $this->investor->find($id);
+        return view('backend.investor.edit')->withinvestor($investor );
     }
 
     /**

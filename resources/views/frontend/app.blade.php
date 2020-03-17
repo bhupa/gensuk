@@ -300,11 +300,13 @@
             if ($(this).height() > descmaxHeight) { descmaxHeight = $(this).height(); }
         });
 
-        // $(".team_name").height(maxHeight);
-        //
-        // $(".team_name").each(function(){
-        //     if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
-        // });
+
+        var eventmaxHeight = 0;
+        $(".single_event").height(eventmaxHeight);
+
+        $(".single_event").each(function(){
+            if ($(this).height() > eventmaxHeight) { maxHeight = $(this).height(); }
+        });
         //
         // $(".team_name").height(maxHeight);
     });

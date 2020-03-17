@@ -19,6 +19,7 @@ class InvestorController extends Controller
     }
     public function store(InvestorStoreRequest $request)
     {
+
         $project = $this->project->find($request->id);
         $data = $request->except('_token');
         $data['project_id']= $project->id;

@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\Contact\ContactReplyStore;
+use App\Mail\Contact\AdminContactReplyMail;
+use App\Mail\Contact\ContactReplyMail;
 use App\Repositories\ContactRepository;
+use App\Repositories\SettingRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    protected $contact;
+    protected $contact,$setting;
 
-    public function __construct(ContactRepository $contact)
+    public function __construct(ContactRepository $contact,SettingRepository $setting)
     {
         $this->contact = $contact;
+        $this->setting = $setting;
 
     }
     public function index()
@@ -38,20 +44,31 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(contacttoreRequest $request)
+    public function store(ContactReplyStore $request)
     {
-        $data = $request->except('_token','image');
+        $data= $request->except('_token','description');
+        $data = $this->contact->find($request->id);
+        $data['description']= $request->description;
+        $data['cc'] ='CC of contact message reply';
+        $adminEmail = $this->setting->where('slug','from-admin')->first();
+        $companyName = $this->setting->where('slug','compant-name')->first();
+        $fromEmail = $this->setting->where('slug','reply-email')->first();
+        $company = [
+            'name'=>$companyName->value,
+            'email'=> $fromEmail->value,
+            'compnay_email'=> $adminEmail->value
+        ];
 
+        Mail::to($adminEmail->value)->send(new AdminContactReplyMail($data,$company));
+        Mail::to($data->email)->send(new ContactReplyMail($data,$company));
 
-        $data['is_active'] =(isset($request['is_active'])) ? 1 : 0;
-        $data['create_by'] = Auth::user()->id;
-
-        if($this->contact->create($data)){
-
-
-            return redirect()->to('/contact')->with('success','contact created successfully');
+        if (Mail::failures()){
+            return redirect()->back()->with('errors','Email cannot send succeefully');
         }
-        return redirect()->back()->with('errors','contact cannot created Successfully');
+        else{
+            return redirect()->to('/contacts')->with('success','Email has sent successfully');
+
+        }
     }
 
     /**
@@ -72,13 +89,10 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        $categories = $this->category->where('is_active','1')->orderBy('name')->get();
-
-
-        $contact = $this->contact->where('slug', $slug)->first();
-        return view('backend.contact.edit')->withcontact($contact )->withCategories($categories);
+        $contact = $this->contact->find($id);
+        return view('backend.contact.edit')->withContact($contact);
     }
 
     /**

@@ -12,6 +12,12 @@ class Investor extends Model
         'name',
         'email',
         'phone',
-        'message'
+        'message',
+        'project_id'
     ];
+
+    public function project() {
+
+        return $this->belongsTo(Project::class,'project_id');
+    }
 }
