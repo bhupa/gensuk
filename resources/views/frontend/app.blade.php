@@ -293,10 +293,10 @@
         });
 
         var descmaxHeight = 100;
-        $(".team-details-description").height(descmaxHeight);
+        $(".team_area .team-details-description").height(descmaxHeight);
 
 
-        $(".team-details-description").each(function(){
+        $(".team_area .team-details-description").each(function(){
             if ($(this).height() > descmaxHeight) { descmaxHeight = $(this).height(); }
         });
 

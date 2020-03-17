@@ -161,6 +161,8 @@
     <script >
         $(document).ready(function(){
             $('.list li').on('click',function(){
+                var descmaxHeight = 100;
+
                 var date = $(this).attr('data-value');
                 $("#overlay-load").fadeIn(300);
                 $.ajax({
