@@ -26,8 +26,8 @@ class TeamController extends Controller
     public function index()
     {
         $year = Carbon::now()->format('Y');
-        $teams = $this->team->where('is_active','1')->orderBy('display_orders','asc')->whereYear('date',$year)->get();
-        $members = $this->member->where('is_active','1')->orderBy('display_orders','asc')->get();
+        $teams = $this->team->where('is_active','1')->orderBy('date','desc')->whereYear('date',$year)->get();
+        $members = $this->member->where('is_active','1')->orderBy('display_orders','desc')->get();
 
 //        $teamList = Team::whereYear('date', '=', $year)->get();
         $usersUnique = Team::select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(date, '%Y') new_date"),  DB::raw('YEAR(date) year, MONTH(date) year'))
@@ -50,7 +50,7 @@ class TeamController extends Controller
     }
 
     public  function list(Request $request){
-        $teams = $this->team->where('is_active','1')->orderBy('display_orders','asc')->whereYear('date', '=', $request->date)->get();
+        $teams = $this->team->where('is_active','1')->orderBy('date','desc')->whereYear('date', '=', $request->date)->get();
 
         return view('frontend.team.lists')->withTeams($teams);
     }
