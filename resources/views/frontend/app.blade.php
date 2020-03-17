@@ -301,12 +301,12 @@
         });
 
 
-        var eventmaxHeight = 0;
-        $(".single_event").height(eventmaxHeight);
-
-        $(".single_event").each(function(){
-            if ($(this).height() > eventmaxHeight) { maxHeight = $(this).height(); }
-        });
+        // var eventmaxHeight = 0;
+        // $(".single_event").height(eventmaxHeight);
+        //
+        // $(".single_event").each(function(){
+        //     if ($(this).height() > eventmaxHeight) { maxHeight = $(this).height(); }
+        // });
         //
         // $(".team_name").height(maxHeight);
     });
