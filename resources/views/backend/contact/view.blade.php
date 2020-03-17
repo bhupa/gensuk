@@ -52,6 +52,10 @@
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->phone}}</td>
                                     <td>
+                                        <a href="javascript:void(0)" id="reply-contact-email" class="edit-modal btn btn-success btn-circle btn-sm"
+                                           data-type="{{$item->id}}">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
                                         {{-- @if(auth()->user()->can('edit-banner')) --}}
                                         <a href="javascript:void(0)" id="view-contact-details" class="edit-modal btn btn-info btn-circle btn-sm"
                                            data-type="{{$item->id}}">
@@ -163,6 +167,38 @@
                                 }
                             }
                         });
+
+            })
+
+            $('#table').on('click','#reply-contact-email',function(event){
+                event.preventDefault();
+                $object = $(this);
+                var id  = $(this).attr('data-type');
+                var url = baseUrl+"/contacts/"+id+"/edit";
+
+
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    data: {
+                        id: id,
+
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (contact) {
+                        $('.contact-details').html(contact);
+                        $('#contact-emails').modal('show');
+                    },
+                    error: function (e) {
+                        if (e.responseJSON.message) {
+                            swal('Error', e.responseJSON.message, 'error');
+                        } else {
+                            swal('Error', 'Something went wrong while processing your request.', 'error')
+                        }
+                    }
+                });
 
             })
 

@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\Volunteer\VolunteerReplyStore;
+use App\Mail\Contact\AdminContactReplyMail;
+use App\Mail\Investment\InvestmentReplyMail;
+use App\Mail\Volunter\VolunterReplyMail;
+use App\Repositories\SettingRepository;
 use App\Repositories\VolunterRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class VolunterController extends Controller
 {
-    protected $volunter;
+    protected $volunter,$setting;
 
-    public function __construct(VolunterRepository $volunter)
+    public function __construct(VolunterRepository $volunter,SettingRepository $setting)
     {
         $this->volunter = $volunter;
+        $this->setting = $setting;
 
     }
     public function index()
@@ -28,8 +35,8 @@ class VolunterController extends Controller
      */
     public function create()
     {
-        $categories = $this->category->where('is_active','1')->orderBy('name')->get();
-        return view('backend.volunter.create')->withCategories($categories);
+//        $categories = $this->category->where('is_active','1')->orderBy('name')->get();
+//        return view('backend.volunter.create')->withCategories($categories);
     }
 
     /**
@@ -38,20 +45,32 @@ class VolunterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(voluntertoreRequest $request)
+    public function store(VolunteerReplyStore $request)
     {
-        $data = $request->except('_token','image');
+        $data= $request->except('_token','description');
+        $data = $this->volunter->find($request->id);
+        $data['description']= $request->description;
+        $data['cc'] ='CC of Volunter message reply';
+        $data['eventTitle'] = $data->event->title;
+        $adminEmail = $this->setting->where('slug','from-admin')->first();
+        $companyName = $this->setting->where('slug','compant-name')->first();
+        $fromEmail = $this->setting->where('slug','reply-email')->first();
+        $company = [
+            'name'=>$companyName->value,
+            'email'=> $fromEmail->value,
+            'compnay_email'=> $adminEmail->value
+        ];
 
+        Mail::to($adminEmail->value)->send(new AdminContactReplyMail($data,$company));
+        Mail::to($data->email)->send(new VolunterReplyMail($data,$company));
 
-        $data['is_active'] =(isset($request['is_active'])) ? 1 : 0;
-        $data['create_by'] = Auth::user()->id;
-
-        if($this->volunter->create($data)){
-
-
-            return redirect()->to('/volunter')->with('success','volunter created successfully');
+        if (Mail::failures()){
+            return redirect()->back()->with('errors','Email cannot send succeefully');
         }
-        return redirect()->back()->with('errors','volunter cannot created Successfully');
+        else{
+            return redirect()->to('/volunters')->with('success','Email has sent successfully');
+
+        }
     }
 
     /**
@@ -72,13 +91,13 @@ class VolunterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        $categories = $this->category->where('is_active','1')->orderBy('name')->get();
 
 
-        $volunter = $this->volunter->where('slug', $slug)->first();
-        return view('backend.volunter.edit')->withvolunter($volunter )->withCategories($categories);
+
+        $volunter = $this->volunter->find($id);
+        return view('backend.volunter.edit')->withvolunter($volunter );
     }
 
     /**
@@ -88,7 +107,7 @@ class VolunterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(volunterUpdateRequest $request, $id)
+    public function update(VolunteerReplyStore $request, $id)
     {
 
 

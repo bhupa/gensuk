@@ -1,5 +1,5 @@
 @extends('backend.home')
-@section('title','Volunters-Lists')
+@section('title','Volunteers-Lists')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -19,7 +19,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                              <li class="breadcrumb-item"><a href="javascript:void(0)"> Volunter List</a></li>
+                              <li class="breadcrumb-item"><a href="javascript:void(0)"> Volunteer List</a></li>
                             <li class="breadcrumb-item active">Dashboard </li>
                         </ol>
                     </div><!-- /.col -->
@@ -37,6 +37,7 @@
                             <thead class="text-uppercase bg-primary">
                             <tr class="text-white">
                                 <th scope="col">ID</th>
+                                <th scope="col">Event Title</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
@@ -48,10 +49,15 @@
                             @foreach($volunters as $key=>$item)
                                 <tr id="item-{{$item->id}}">
                                     <td>{{$key+1}}</td>
+                                    <td>{{$item->event->title}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->phone}}</td>
                                     <td>
+                                        <a href="javascript:void(0)" id="reply-volunteer-email" class="edit-modal btn btn-success btn-circle btn-sm"
+                                           data-type="{{$item->id}}">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
                                         {{-- @if(auth()->user()->can('edit-banner')) --}}
                                         <a href="javascript:void(0)" id="view-volunter-details" class="edit-modal btn btn-info btn-circle btn-sm"
                                            data-type="{{$item->id}}">
@@ -154,6 +160,37 @@
                     success: function (volunter) {
                         $('.volunter-details').html(volunter);
                         $('#volunter-details').modal('show');
+                    },
+                    error: function (e) {
+                        if (e.responseJSON.message) {
+                            swal('Error', e.responseJSON.message, 'error');
+                        } else {
+                            swal('Error', 'Something went wrong while processing your request.', 'error')
+                        }
+                    }
+                });
+
+            })
+            $('#table').on('click','#reply-volunteer-email',function(event){
+                event.preventDefault();
+                $object = $(this);
+                var id  = $(this).attr('data-type');
+                var url = baseUrl+"/volunters/"+id+"/edit";
+
+
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    data: {
+                        id: id,
+
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (volunter) {
+                        $('.volunter-details').html(volunter);
+                        $('#volunter-reply-details').modal('show');
                     },
                     error: function (e) {
                         if (e.responseJSON.message) {

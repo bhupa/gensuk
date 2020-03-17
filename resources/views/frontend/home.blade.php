@@ -254,7 +254,7 @@
                         @endif
                     @endforeach
 
-                    <a href="member.html" class="primary_btn yellow_btn rounded">join with us</a>
+                    <a href="{{route('membership.index')}}" class="primary_btn yellow_btn rounded">join with us</a>
                 </div>
             </div>
         </div>
