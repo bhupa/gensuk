@@ -60,7 +60,7 @@ class InvestorController extends Controller
             'compnay_email'=> $adminEmail['value']
         ];
 
-        Mail::to($adminEmail->value)->send(new AdminContactReplyMail($data,$company));
+        Mail::to($adminEmail['value'])->send(new AdminContactReplyMail($data,$company));
         Mail::to($data->email)->send(new InvestmentReplyMail($data,$company));
 
         if (Mail::failures()){
