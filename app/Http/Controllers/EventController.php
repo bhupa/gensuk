@@ -20,7 +20,7 @@ class EventController extends Controller
     public function index()
     {
 
-        $events = $this->event->orderBy('created_at','desc')->paginate('6');
+        $events = $this->event->where('is_active','1')->orderBy('created_at','desc')->paginate('6');
         $contentBanners = $this->contentBanner->where('is_active','1')->get();
         $contents = $this->content->where('is_active','1')->get();
         return view('frontend.event.index')->withEvents($events)->withContentBanners($contentBanners)->withContents($contents);

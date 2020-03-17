@@ -21,7 +21,7 @@ class BlogController extends Controller
     public function index()
     {
 
-        $blogs = $this->blog->orderBy('created_at','desc')->paginate('6');
+        $blogs = $this->blog->where('is_active','1')->orderBy('created_at','desc')->paginate('6');
         $contentBanners = $this->contentBanner->where('is_active','1')->get();
         $contents = $this->content->where('is_active','1')->get();
         return view('frontend.blog.index')->withblogs($blogs)->withContentBanners($contentBanners)->withContents($contents);

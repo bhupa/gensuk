@@ -21,7 +21,7 @@ class GalleryController extends Controller
     public function index()
     {
 
-        $gallerys = $this->gallery->orderBy('created_at','desc')->paginate('6');
+        $gallerys = $this->gallery->where('is_active','1')->orderBy('created_at','desc')->paginate('6');
         $contentBanners = $this->contentBanner->where('is_active','1')->get();
         $contents = $this->content->where('is_active','1')->get();
         return view('frontend.gallery.index')->withgallerys($gallerys)->withContentBanners($contentBanners)->withContents($contents);
