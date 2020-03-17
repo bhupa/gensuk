@@ -14,7 +14,7 @@
     height: 300px;
 }
 .team-details-description {
-    height: 100px;
+    /*height: 100px;*/
 }
 
 .team_item .social {
@@ -196,6 +196,11 @@ p > label {
         font-size: 16px;
         line-height: 30px;
     }
+    .section_gap {
+
+        padding: 113px 0 !important;
+
+}
 }
 
 
