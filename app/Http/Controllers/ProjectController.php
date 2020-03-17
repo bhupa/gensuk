@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
 
-        $projects = $this->project->orderBy('created_at','desc')->paginate('6');
+        $projects = $this->project->where('is_active','1')->orderBy('created_at','desc')->paginate('6');
         $contentBanners = $this->contentBanner->where('is_active','1')->get();
         $contents = $this->content->where('is_active','1')->get();
         return view('frontend.project.index')->withProjects($projects)->withContentBanners($contentBanners)->withContents($contents);

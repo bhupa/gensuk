@@ -24,7 +24,7 @@ class TeamController extends Controller
     public function index()
     {
 
-        $teams = $this->team->orderBy('display_orders','asc')->orderBy('created_at','desc')->paginate('20');
+        $teams = $this->team->orderBy('date','desc')->paginate('20');
 
         return view('backend.team.index')->withteams($teams);
     }

@@ -40,4 +40,7 @@ class Team extends Model
     public function author(){
         return $this->belongsTo(User::class,'created_by');
     }
+    public function member(){
+        return $this->hasOne(LifeMembers::class,'team_id');
+    }
 }

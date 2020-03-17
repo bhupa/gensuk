@@ -140,7 +140,7 @@
                                             <a href="{{$member->team['insta']}}"><i class="fa fa-instagram"></i></a>
                                         @endif
                                         @if($member->team['email'] != '')
-                                            <a href="mailto:{{$member->team['>email']}}"><i class="fa fa-envelope-o"></i></a>
+                                            <a href="mailto:{{$member->team['email']}}"><i class="fa fa-envelope-o"></i></a>
                                         @endif
                                     </div>
                                 </div>
