@@ -101,9 +101,9 @@
             </div>
         </div>
     </section>
-    <section class="team_area section_gap">
+    <section class="team_area section_gap" style="margin-top: -100px;" >
         <div class="container">
-            <div class="main_title">
+            <div class="main_title" style="margin-top: -130px;">
 
                 @foreach($contents as $content)
                     @if($content->slug =='life-member')

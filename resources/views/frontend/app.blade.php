@@ -292,11 +292,13 @@
             if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
         });
 
-        // $(".team_img").height(maxHeight);
-        //
-        // $(".team_img").each(function(){
-        //     if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
-        // });
+        var descmaxHeight = 100;
+        $(".team-details-description").height(descmaxHeight);
+
+
+        $(".team-details-description").each(function(){
+            if ($(this).height() > descmaxHeight) { descmaxHeight = $(this).height(); }
+        });
 
         // $(".team_name").height(maxHeight);
         //
