@@ -12,7 +12,7 @@
                     @foreach($contentBanners as $banner)
                         @if($banner->slug =='about')
                             <h2>{{$banner->title}}</h2>
-                            <p>{{str_limit($banner->short_description,'130','....')}}</p>
+                            <p class="banner-description">{{str_limit($banner->short_description,'200','....')}}</p>
                         @endif
                     @endforeach
                 </div>

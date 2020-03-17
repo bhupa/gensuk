@@ -12,7 +12,8 @@
                     @foreach($contentBanners as $banner)
                         @if($banner->slug =='membership')
                             <h2>{{$banner->title}}</h2>
-                            <p>{{$event->title}}</p>
+                            <p class="banner-description">{{str_limit($banner->short_description,'200','....')}}</p>
+
                         @endif
                     @endforeach
                 </div>

@@ -12,7 +12,8 @@
                     @foreach($contentBanners as $banner)
                         @if($banner->slug =='blog')
                             <h2>{{$banner->title}}</h2>
-                            <p>{{$blog->title}}</p>
+                            <p>{{str_limit($blog->title,'130','....')}}</p>
+
                         @endif
                     @endforeach
                 </div>
