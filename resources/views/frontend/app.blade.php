@@ -286,6 +286,25 @@
             event.preventDefault();
             $(this).ekkoLightbox();
         });
+        var maxHeight = 0;
+
+        $(".team_item").each(function(){
+            if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+        });
+
+        // $(".team_img").height(maxHeight);
+        //
+        // $(".team_img").each(function(){
+        //     if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+        // });
+
+        // $(".team_name").height(maxHeight);
+        //
+        // $(".team_name").each(function(){
+        //     if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+        // });
+        //
+        // $(".team_name").height(maxHeight);
     });
 </script>
 @yield('js_script')
