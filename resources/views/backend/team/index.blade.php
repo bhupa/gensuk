@@ -49,7 +49,7 @@
                             <tbody id="sortable">
 
                             @foreach($teams as $key=>$item)
-                                <tr id="item-{{$item->id}}">
+                                <tr id="item-{{$key+1}}">
                                     <td>{{$key+1}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->position}}</td>
