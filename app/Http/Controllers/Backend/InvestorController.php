@@ -55,9 +55,9 @@ class InvestorController extends Controller
         $companyName = $this->setting->where('slug','compant-name')->first();
         $fromEmail = $this->setting->where('slug','reply-email')->first();
         $company = [
-            'name'=>$companyName->value,
-            'email'=> $fromEmail->value,
-            'compnay_email'=> $adminEmail->value
+            'name'=>$companyName['value'],
+            'email'=> $fromEmail['value'],
+            'compnay_email'=> $adminEmail['value']
         ];
 
         Mail::to($adminEmail->value)->send(new AdminContactReplyMail($data,$company));
