@@ -28,7 +28,7 @@ class TeamController extends Controller
         $year = Carbon::now()->format('Y');
         $teams = $this->team->orderBy('display_orders','asc')->whereYear('date',$year)->get();
         $members = $this->member->where('is_active','1')->orderBy('display_orders','asc')->get();
-
+//	dd($members);
 //        $teamList = Team::whereYear('date', '=', $year)->get();
         $usersUnique = Team::select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(date, '%Y') new_date"),  DB::raw('YEAR(date) year, MONTH(date) year'))
         ->groupby('date','year')
