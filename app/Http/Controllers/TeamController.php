@@ -50,7 +50,7 @@ class TeamController extends Controller
     }
 
     public  function list(Request $request){
-        $teams = $this->team->orderBy('display_orders','asc')->whereYear('date', '=', $request->date)->get();
+        $teams = $this->team->where('is_active','1')->orderBy('display_orders','asc')->whereYear('date', '=', $request->date)->get();
 
         return view('frontend.team.lists')->withTeams($teams);
     }
