@@ -74,7 +74,7 @@
                                 <div class="team_name">
                                     <h4>{{$team->name}}</h4>
                                     <p>{{$team->position}}</p>
-                                    <p class="mt-20">
+                                    <p class="mt-20 team-details-description">
                                         {{str_limit($team->short_description,'90','...')}}
                                     </p>
                                     <div class="social">
@@ -129,7 +129,7 @@
                                     <h4>{{$member->team['name']}}</h4>
                                     <p>{{$member->team['position']}}</p>
 
-                                    <div class="social">
+                                    <div class="social member-ship-social">
                                         @if($member->team['facebook'] != '')
                                             <a href="{{$member->team['faecbook']}}"><i class="fa fa-facebook"></i></a>
                                         @endif
