@@ -10,8 +10,18 @@
 
 
 }
-.team_img {
+.team_img .img-fluid {
     height: 300px;
+}
+.team-details-description {
+    height: 100px;
+}
+
+.team_item .social {
+     margin-top: 0px !important;
+}
+.team_item  .member-ship-social {
+    margin-top: 30px !important;
 }
 .top-header-wrapper ul {
     padding: 0px;
