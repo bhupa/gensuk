@@ -75,7 +75,7 @@
                                         </a>
                                         {{-- @endif --}}
                                         {{-- @if(auth()->user()->can('delete-banner')) --}}
-                                        @if($item->member != '')
+                                        @if(empty($item->member))
                                         <a href="javascript:void(0)" class="delete-teams btn btn-danger btn-circle btn-sm"
                                            data-type="{{$item->id}}">
                                             <i class="fas fa-trash"></i>
