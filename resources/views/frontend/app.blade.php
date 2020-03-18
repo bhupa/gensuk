@@ -102,6 +102,7 @@
                             <li class="nav-item @if(Request::segment(1) == 'membership') active @endif"><a class="nav-link" href="{{route('membership.index')}}">Membership</a>
 
                             <li class="nav-item @if(Request::segment(1) == 'contact-us') active @endif"><a class="nav-link" href="{{route('contact-us.index')}}">Contact</a></li>
+                            <li class="nav-item @if(Request::segment(1) == 'login') active @endif"><a class="nav-link" href="{{route('login')}}">Login</a></li>
                         </ul>
                     </div>
                 </div>
