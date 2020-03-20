@@ -90,7 +90,7 @@
                                     <p>can other invest: @if($project->investors =='1') Yes  @else No @endif</p>
                                 </div>
                                 <div class="d-flex justify-content-between donation align-items-center">
-                                    <a href="#" class="primary_btn">View More</a>
+                                    <a href="{{route('project.show',[$project->slug])}}" class="primary_btn">View More</a>
 
                                 </div>
                             </div>
@@ -260,7 +260,51 @@
         </div>
     </div>
     <!--================ End CTA Area =================-->
+    <!--================ Start blog Area =================-->
+    <section class="features_causes" style="margin-top: 100px;">
+        <div class="container">
+            <div class="main_title">
+                @foreach($contents as $content)
+                    @if($content->slug =='blog')
+                        <h2>{{$content->title}}</h2>
+                        <p>{{ $content->short_description }}</p>
+                    @endif
+                @endforeach
+            </div>
 
+            <div class="row">
+                @foreach($blogLists as $blog)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <figure>
+                                    @if(file_exists('storage/'.$blog->image) && $blog->image != '')
+                                        <img class="card-img-top img-fluid" style="height: 250px;" src="{{asset('storage/'.$blog->image)}}" alt="{{$blog->title}}">
+                                    @endif
+                                </figure>
+                                <div class="card_inner_body">
+                                    <h4 class="card-title">{{$blog->title}}</h4>
+
+                                    <p class="card-text">
+                                        {{ str_limit($blog->short_description,'150','.....')}}
+                                    </p>
+                                    <div class="d-flex justify-content-between raised_goal">
+
+                                        <h5 class="card-sub-title">{{$blog->category->name}}</h5>
+                                    </div>
+                                    <div class="d-flex justify-content-between donation align-items-center">
+                                        <a href="{{route('blog.show',[$blog->slug])}}" class="primary_btn">View More</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+    </section>
     <!--================ Start Story Area =================-->
     <section class="section_gap story_area">
         <div class="container">
