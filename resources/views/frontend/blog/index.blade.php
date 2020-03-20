@@ -35,11 +35,11 @@
             <div class="row">
                 @foreach( $blogs as $event)
                     <div class="col-lg-4 col-md-6">
-                        <div class="card">
+                        <div class="card" style="margin-bottom:30px;">
                             <div class="card-body">
                                 <figure>
                                     @if(file_exists('storage/'.$event->image) && $event->image != '')
-                                         <img class="card-img-top img-fluid" src="{{asset('storage/'.$event->image)}}" alt="{{$event->title}}">
+                                         <img class="card-img-top img-fluid" style="height: 250px;" src="{{asset('storage/'.$event->image)}}" alt="{{$event->title}}">
                                     @endif
                                 </figure>
                                      <div class="card_inner_body">
