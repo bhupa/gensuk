@@ -283,14 +283,14 @@
                                     @endif
                                 </figure>
                                 <div class="card_inner_body">
-                                    <h4 class="card-title">{{$blog->title}}</h4>
+                                    <h4 class="card-title">{{$blog->name}}</h4>
 
                                     <p class="card-text">
                                         {{ str_limit($blog->short_description,'150','.....')}}
                                     </p>
                                     <div class="d-flex justify-content-between raised_goal">
 
-                                        <h5 class="card-sub-title">{{$blog->category->name}}</h5>
+                                        <h5 class="card-sub-title">{{$blog->name}}</h5>
                                     </div>
                                     <div class="d-flex justify-content-between donation align-items-center">
                                         <a href="{{route('blog.show',[$blog->slug])}}" class="primary_btn">View More</a>

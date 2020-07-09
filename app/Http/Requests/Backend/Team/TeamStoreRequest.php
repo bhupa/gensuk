@@ -31,6 +31,7 @@ class TeamStoreRequest extends FormRequest
             'facebook'=>'nullable|url',
             'twitter'=>'nullable|url',
             'insta'=>'nullable|url',
+            'date'=>'required|date_format:Y-m-d'
 
         ];
     }

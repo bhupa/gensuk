@@ -35,7 +35,7 @@
             <div class="row">
                 @foreach( $blogs as $event)
                     <div class="col-lg-4 col-md-6">
-                        <div class="card" style="margin-bottom:30px;">
+                        <div class="card" style="margin-top:100px;">
                             <div class="card-body">
                                 <figure>
                                     @if(file_exists('storage/'.$event->image) && $event->image != '')

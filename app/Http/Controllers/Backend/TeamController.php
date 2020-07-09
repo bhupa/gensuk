@@ -60,7 +60,6 @@ class TeamController extends Controller
         $data['is_active'] =(isset($request['is_active'])) ? 1 : 0;
         $data['created_by'] = Auth::user()->id;
 //        $data['created_at'] = '2018';
-
         if($this->team->create($data)){
 
 

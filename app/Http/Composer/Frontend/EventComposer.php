@@ -27,7 +27,7 @@ class EventComposer
     /**
      * The user repository implementation.
      *
-     * @var UserRepository
+     * @var UserRepositorya
      */
     protected  $content,$contentBanner,$team,$blogs,$blogCategories, $setting, $project,$event,$galleries;
 
